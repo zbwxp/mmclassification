@@ -37,4 +37,7 @@ class SEResNet_CIFAR(SEResNet):
             x = res_layer(x)
             if i in self.out_indices:
                 outs.append(x)
-        return tuple(outs)
+        if len(outs) == 1:
+            return outs[0]
+        else:
+            return tuple(outs)
